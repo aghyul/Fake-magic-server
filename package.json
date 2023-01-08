@@ -1,0 +1,11 @@
+{
+  "name": "fake-api-server",
+  "version": "0.1.0",
+  "description": "A fake back-end api server",
+  "main": "api",
+  "author": "Senhung Wong <4chano@aghyul.tk>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

@@ -1,0 +1,32 @@
+const express = require('express');
+const argvParser = require('./services/argumentsParser.js');
+const route = require('./routes/route.js');
+
+/* express app */
+const app = express();
+
+/* the default setting of the app */
+const settings = {
+    port: 3000
+};
+
+/* use express.json to parse request */
+app.use(express.json());
+
+/* get all parsed user input options */
+options = argvParser.arguments();
+
+/* overwrite default settings */
+for (const option in options['options']) {
+    if (options['options'].hasOwnProperty(option)) {
+        settings[option] = options['options'][option];
+    }
+}
+
+/* api routes */
+route.api(app);
+
+/* serve */
+if (options['action'] === 'serve') {
+    app.listen(settings['port'], () => console.log('Server is running on localhost:' + settings['port']));
+}
